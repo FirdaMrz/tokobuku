@@ -31,15 +31,15 @@ class buku extends model{
 
 	}
 
-	public function show($id_buku) {
-		$sql = $this->db->prepare("CALL getallbuku(?)");
-		$sql->bindParam(1, $id_buku, PDO::PARAM_INT);
+	public function show() {
+		$sql = $this->db->prepare("CALL getallbuku()");
 		$sql->execute();
 	
 		$row = $sql->fetch(PDO::FETCH_LAZY);
 	
 		return $row;
 	}
+	
 	
 
 	public function edit($id_buku){

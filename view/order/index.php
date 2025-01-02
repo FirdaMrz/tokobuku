@@ -17,24 +17,26 @@ while ($keranjang = $list_keranjang->fetch(PDO::FETCH_LAZY)) {
 	$jumlah_keranjang += $keranjang['jumlah'];
 }
 ?>
-<div>
-<div class="pull-left"><h2>Barang Di Keranjang : <?=$jumlah_keranjang?></h2></div>
-<div class="pull-right">
-	<a href="index.php?page=cart" class="btn btn-success">Lihat Keranjang</a>
+<div class="col-md-8">
+    <form method="POST" action="index.php?page=order">
+        <div class="input-group">
+            <input type="text" id="pencarian" name="pencarian" class="form-control" placeholder="Masukkan Judul atau Nomor ISBN">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">Cari</button>
+            </span>
+        </div>
+    </form>
 </div>
+
+<div class="pull-right">
+    <a href="index.php?page=cart" class="btn btn-success">Lihat Keranjang</a>
 </div>
 <br>
+<br>
 <div class="pull-left">
-		<form method="POST" action="index.php?page=order">
-			<div class="input-group">
-				<input type="text" id="pencarian" style="height: 50px; font-size: 20px;" name="pencarian" class="form-control" placeholder="Masukkan Judul atau Nomor ISBN">
-			<span class="input-group-btn">
-				<button class="btn btn-default" type="submit" style="height: 50px;">Cari</button>
-			</span>
-			</div>
-		</form>
-
+    <strong>Barang Di Keranjang : <?=$jumlah_keranjang?></strong>
 </div>
+
 <p>
 	
 </p>

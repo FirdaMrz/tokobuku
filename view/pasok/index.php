@@ -59,7 +59,7 @@ if(isset($_GET['sukses'])){
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				Edit Buku
+				Edit Pasok
 			</div>
 			<div id="edit" class="modal-body">
 				
