@@ -1,9 +1,15 @@
 <?php
 require_once('model/buku.php');
 
-$id_buku = $_GET['id'];
+$id_buku = $_GET['id']; 
+
+// Debugging: Cek apakah ID benar
+echo "ID Buku yang diterima: " . htmlspecialchars($id_buku) . "<br>";
+
 $list_buku = $buku->show($id_buku);
 ?>
+
+
 <table class="table table-bordered table-striped">
     <tr>
         <td><strong>Judul Buku</strong></td>

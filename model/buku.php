@@ -30,26 +30,30 @@ class buku extends model{
 		return $sql;
 
 	}
+	
+	public function showAll() { 
+        $sql = $this->db->prepare("CALL getallbuku()");
+        $sql->execute();
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
 
-	public function show() {
-		$sql = $this->db->prepare("CALL getallbuku()");
-		$sql->execute();
-	
-		$row = $sql->fetch(PDO::FETCH_LAZY);
-	
-		return $row;
-	}
-	
-	
+    // Menampilkan detail satu buku
+    public function show($id_buku) {
+        $sql = $this->db->prepare('SELECT * FROM buku WHERE id_buku = ?');
+        $sql->execute([$id_buku]); 
+        return $sql->fetch(PDO::FETCH_ASSOC);
+    }
 
-	public function edit($id_buku){
-		$sql = $this->db->prepare('SELECT * FROM buku WHERE id_buku=?');
-		$sql->bindParam(1, $id_buku);
-		$sql->execute();
-		$row = $sql->fetch(PDO::FETCH_LAZY);
-
-		return $row;
-	}
+    // Mengambil data untuk diedit
+    public function edit($id_buku) {
+        $sql = $this->db->prepare('SELECT * FROM buku WHERE id_buku=?');
+        $sql->bindParam(1, $id_buku);
+        $sql->execute();
+        return $sql->fetch(PDO::FETCH_ASSOC);
+    }
+	
+	
+	
 
 	public function update($judul, $noisbn, $penulis, $penerbit, $tahun, $stok, $harga_pokok, $keuntungan, $harga_jual, $ppn, $diskon, $foto_upload, $id_buku){
 
